@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "market_id": "1.210798031",
+      "status": "CLOSED",
+      "betDelay": 5,
+      "inplay": false,
+      "selections": [
+        {
+          "status": "LOSER",
+          "selection_id": 414464,
+          "back_odds": [
+            {
+              "price": 1.23,
+              "size": 15509.31
+            },
+            {
+              "price": 1.22,
+              "size": 16692.93
+            },
+            {
+              "price": 1.21,
+              "size": 9869.97
+            }
+          ],
+          "lay_odds": [
+            {
+              "price": 1.25,
+              "size": 3061.74
+            },
+            {
+              "price": 1.26,
+              "size": 269.19
+            },
+            {
+              "price": 1.27,
+              "size": 2779.19
+            }
+          ]
+        },
+        {
+          "status": "LOSER",
+          "selection_id": 16606,
+          "back_odds": [],
+          "lay_odds": []
+        },
+        {
+          "status": "WINNER",
+          "selection_id": 60443,
+          "back_odds": [
+            {
+              "price": 1.23,
+              "size": 15509.31
+            },
+            {
+              "price": 1.22,
+              "size": 16692.93
+            },
+            {
+              "price": 1.21,
+              "size": 9869.97
+            }
+          ],
+          "lay_odds": [
+            {
+              "price": 2.15,
+              "size": 3061.74
+            },
+            {
+              "price": 1.26,
+              "size": 269.19
+            },
+            {
+              "price": 1.27,
+              "size": 2779.19
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

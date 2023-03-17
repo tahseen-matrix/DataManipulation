@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/_10sdp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/matchOdds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Match odds"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBack"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_13sdp"
+            android:text="back"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="@id/tvLay"
+            app:layout_constraintEnd_toStartOf="@id/tvLay"
+            app:layout_constraintTop_toTopOf="@id/tvLay"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLay"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_3sdp"
+            android:paddingHorizontal="@dimen/_13sdp"
+            android:text="lay"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMatchOddsChild"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:background="@color/light_grey"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/matchOdds"
+            app:layout_constraintTop_toBottomOf="@id/matchOdds"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

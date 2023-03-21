@@ -9,6 +9,7 @@ import com.matrix.datamodelconversation.adapter.SubcategoryDetailsAdapter
 import com.matrix.datamodelconversation.databinding.ActivityEventDetailsBinding
 import com.matrix.datamodelconversation.model.categorydetail.EventDetailsCategory
 import com.matrix.datamodelconversation.model.eventdetailsres.EventDetails
+import java.util.ArrayList
 
 class EventDetailsActivity : AppCompatActivity() {
     private val binding: ActivityEventDetailsBinding by lazy {
@@ -27,46 +28,71 @@ class EventDetailsActivity : AppCompatActivity() {
             adapter = it
         }
 
-        if (events!!.match.matchodds[0].market_id == oddsByMarket!!.data[0].market_id) {
-            val subCategory =
-                categoryList.first { it.name == "Match Odds" }
-            val changedPos =
-                subCategory.eventsData.indexOfFirst { it.market_id == oddsByMarket!!.data[0].market_id }
-            val itemToChange =
-                subCategory.eventsData[changedPos]
-            itemToChange.market_odds = oddsByMarket!!.data[0]
-            adapter.notifyItemChanged(changedPos)
-        }
-        if (events!!.match.bookmaker[0].market_id == oddsByMarket!!.data[0].market_id) {
-            val subCategory =
-                categoryList.first { it.name == "Bookmaker" }
-            val changedPos =
-                subCategory.eventsData.indexOfFirst { it.market_id == oddsByMarket!!.data[0].market_id }
-            val itemToChange =
-                subCategory.eventsData[changedPos]
-            itemToChange.market_odds = oddsByMarket!!.data[0]
-            adapter.notifyItemChanged(changedPos)
+        getOddsByMarketCommon()
+
+
+    }
+
+    private fun getOddsByMarketCommon() {
+        for (element in events!!.match.matchodds.indices) {
+            val list: ArrayList<String> = arrayListOf()
+            list.add(events!!.match.matchodds[element].market_id)
+            for (element in events!!.match.matchodds.indices) {
+                if (events!!.match.matchodds[element].market_id == oddsByMarket!!.data[0].market_id) {
+                    val subCategory =
+                        categoryList.first { it.name == events!!.match.matchodds[element].name }
+                    val changedPos =
+                        subCategory.eventsData.indexOfFirst { it.market_id == oddsByMarket!!.data[0].market_id }
+                    val itemToChange =
+                        subCategory.eventsData[changedPos]
+                    itemToChange.market_odds = oddsByMarket!!.data[0]
+                    adapter.notifyItemChanged(changedPos)
+
+                    if (events!!.match.sport_id == 171 && events!!.match.all_matchbf_odds.isNotEmpty()){
+                        for (i in events!!.match.all_matchbf_odds.indices){
+                           if (events!!.match.all_matchbf_odds[i].market_id == childOddsByMarket!!.data[0].market_id){
+                               val subCategory =
+                                   categoryList.first { it.name == events!!.match.all_matchbf_odds[element].name }
+                               val changedPos =
+                                   subCategory.eventsData.indexOfFirst { it.market_id == childOddsByMarket!!.data[0].market_id }
+                               val itemToChange =
+                                   subCategory.eventsData[changedPos]
+                               itemToChange.market_odds = childOddsByMarket!!.data[0]
+                               adapter.notifyItemChanged(changedPos)
+                           }
+
+                        }
+                    }
+                }
+
+
+            }
         }
 
     }
 
     private fun getEventCategories(): ArrayList<EventDetailsCategory> {
         categoryList = ArrayList()
-
-        if (events!!.match.matchodds.isNotEmpty()) {
-            categoryList.add(EventDetailsCategory("Match Odds",
-                events!!.match.matchodds))
-        }
-        if (events!!.match.fancymarkets.isNotEmpty()) {
-            if (events!!.match!!.fancymarkets[0].selection_lists.isNotEmpty()){
-                categoryList.add(EventDetailsCategory("Fancy",
-                    events!!.match.fancymarkets))
+        if (events?.match?.matchodds?.isNotEmpty()!!) {
+            events!!.match.matchodds.map {
+                categoryList.add(EventDetailsCategory(it.name, listOf(it)))
             }
-
         }
-        if (events!!.match.bookmaker.isNotEmpty()) {
-            categoryList.add(EventDetailsCategory("Bookmaker",
-                events!!.match.bookmaker))
+        if (events!!.match.sport_id == 30) {
+            if (events!!.match.fancymarkets.isNotEmpty()) {
+                events!!.match.fancymarkets.map {
+                    categoryList.add(EventDetailsCategory(it.name, listOf(it)))
+                }
+            }
+            if (events!!.match.bookmaker.isNotEmpty()) {
+                events!!.match.bookmaker.map {
+                    categoryList.add(EventDetailsCategory(it.name, listOf(it)))
+                }
+            }
+        } else if (events!!.match.sport_id == 171 && events!!.match.all_matchbf_odds.isNotEmpty()) {
+            events!!.match.all_matchbf_odds.map {
+                categoryList.add(EventDetailsCategory(it.name, listOf(it)))
+            }
         }
 
         return categoryList
@@ -75,7 +101,8 @@ class EventDetailsActivity : AppCompatActivity() {
 
     private lateinit var adapter: SubcategoryDetailsAdapter
     var events: EventDetails? = null
-    var oddsByMarket: OddsByMarket? = null
+    private var oddsByMarket: OddsByMarket? = null
+    var childOddsByMarket: OddsByMarket? = null
     private fun initData() {
         val jsonData = applicationContext.resources.openRawResource(applicationContext
             .resources
@@ -88,6 +115,12 @@ class EventDetailsActivity : AppCompatActivity() {
             .getIdentifier("oddsbymarket", "raw", applicationContext.packageName))
             .bufferedReader().use { it.readText() }
         oddsByMarket = gson.fromJson(fff, OddsByMarket::class.java)
+
+        val fghf = applicationContext.resources.openRawResource(applicationContext
+            .resources
+            .getIdentifier("childoddsbymarket", "raw", applicationContext.packageName))
+            .bufferedReader().use { it.readText() }
+        childOddsByMarket = gson.fromJson(fghf, OddsByMarket::class.java)
 
     }
 }

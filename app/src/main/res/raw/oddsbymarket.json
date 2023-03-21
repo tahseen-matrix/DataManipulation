@@ -1,78 +1,104 @@
 {
   "data": [
     {
-      "market_id": "1.210798031",
-      "status": "CLOSED",
-      "betDelay": 5,
+      "market_id": "1.211659726",
+      "status": "OPEN",
+      "betDelay": 0,
       "inplay": false,
       "selections": [
         {
-          "status": "LOSER",
-          "selection_id": 414464,
+          "status": "ACTIVE",
+          "selection_id": 9904914,
           "back_odds": [
             {
-              "price": 1.23,
-              "size": 15509.31
+              "price": 2.24,
+              "size": 7.25
             },
             {
-              "price": 1.22,
-              "size": 16692.93
+              "price": 2.18,
+              "size": 1.69
             },
             {
-              "price": 1.21,
-              "size": 9869.97
+              "price": 2.14,
+              "size": 1.54
             }
           ],
           "lay_odds": [
             {
-              "price": 1.25,
-              "size": 3061.74
+              "price": 2.52,
+              "size": 5.48
             },
             {
-              "price": 1.26,
-              "size": 269.19
+              "price": 2.54,
+              "size": 3.94
             },
             {
-              "price": 1.27,
-              "size": 2779.19
+              "price": 2.6,
+              "size": 9.33
             }
           ]
         },
         {
-          "status": "LOSER",
-          "selection_id": 16606,
-          "back_odds": [],
-          "lay_odds": []
-        },
-        {
-          "status": "WINNER",
-          "selection_id": 60443,
+          "status": "ACTIVE",
+          "selection_id": 39013217,
           "back_odds": [
             {
-              "price": 1.23,
-              "size": 15509.31
+              "price": 3.55,
+              "size": 6.71
             },
             {
-              "price": 1.22,
-              "size": 16692.93
+              "price": 3.45,
+              "size": 3.4
             },
             {
-              "price": 1.21,
-              "size": 9869.97
+              "price": 3.4,
+              "size": 150.64
             }
           ],
           "lay_odds": [
             {
-              "price": 2.15,
-              "size": 3061.74
+              "price": 4.3,
+              "size": 2.8
             },
             {
-              "price": 1.26,
-              "size": 269.19
+              "price": 4.4,
+              "size": 163.52
             },
             {
-              "price": 1.27,
-              "size": 2779.19
+              "price": 4.5,
+              "size": 56.04
+            }
+          ]
+        },
+        {
+          "status": "ACTIVE",
+          "selection_id": 58805,
+          "back_odds": [
+            {
+              "price": 3.1,
+              "size": 13.05
+            },
+            {
+              "price": 3.05,
+              "size": 176.36
+            },
+            {
+              "price": 3,
+              "size": 26.46
+            }
+          ],
+          "lay_odds": [
+            {
+              "price": 3.4,
+              "size": 4.2
+            },
+            {
+              "price": 3.45,
+              "size": 6
+            },
+            {
+              "price": 3.55,
+              "size": 8
             }
           ]
         }

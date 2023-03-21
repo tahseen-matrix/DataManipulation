@@ -1,7 +1,7 @@
 package com.matrix.datamodelconversation.model.eventdetailsres
 
 data class Match(
-    val all_matchbf_odds: List<Any>,
+    val all_matchbf_odds: List<Matchodd>,
     val auto_traded: Int,
     val best_of: Any,
     val bet_radar_event_id: String,
